@@ -21,6 +21,7 @@
         "$nix_shell"
         "$directory"
         "$git_branch"
+        "$git_status"
         "$character"
       ];
 
@@ -28,13 +29,13 @@
 
       # Modules
       character = {
-        format = "$symbol ";
+        format = " $symbol ";
         success_symbol = "[λ](bold green)";
         error_symbol = "[λ](bold red)";
       };
 
       hostname = {
-        format = "on [$hostname](bold red) ";
+        format = "on [$hostname](bold red)";
       };
 
       directory = {
@@ -48,10 +49,25 @@
       };
 
       git_branch = {
-        format = "[$symbol$branch]($style) ";
+        format = "[$symbol$branch]($style)";
         symbol = "";
         truncation_symbol = ".../";
         style = "bold green";
+      };
+
+      git_status = {
+        format = "([$all_status$ahead_behind]($style))";
+        conflicted = "=";
+        ahead = "⇡";
+        behind = "⇣";
+        diverged = "⇕";
+        untracked = "⋄";
+        stashed = "⩮";
+        modified = "∽";
+        staged = "+";
+        renamed = "»";
+        deleted = "✘";
+        style = "red";
       };
     };
   };
