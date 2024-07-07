@@ -14,9 +14,9 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/common
     ../../modules/nixos
     ../../modules/wsl
-    globals # TODO: Why is this here?
-    inputs.wsl.nixosModules.wsl # TODO: What's this?
-    inputs.home-manager.nixosModules.home-manager # TODO: What's this?
+    globals
+    inputs.wsl.nixosModules.wsl
+    inputs.home-manager.nixosModules.home-manager
     {
       networking.hostName = "weasel";
       nixpkgs.overlays = overlays;
