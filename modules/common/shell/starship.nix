@@ -11,10 +11,16 @@
     # https://starship.rs/config/
     enable = true;
     settings = {
+      # Configurations
+      command_timeout = 1000;
+
+      # Looks
       add_newline = false;
       format = lib.concatStrings [
         "$hostname"
+        "$nix_shell"
         "$directory"
+        "$git_branch"
         "$character"
       ];
 
@@ -22,6 +28,7 @@
 
       # Modules
       character = {
+        format = "$symbol ";
         success_symbol = "[λ](bold green)";
         error_symbol = "[λ](bold red)";
       };
@@ -38,6 +45,13 @@
       nix_shell = {
         format = "[$symbol $name]($style)";
         symbol = "❄️";
+      };
+
+      git_branch = {
+        format = "[$symbol$branch]($style) ";
+        symbol = "";
+        truncation_symbol = ".../";
+        style = "bold green";
       };
     };
   };
