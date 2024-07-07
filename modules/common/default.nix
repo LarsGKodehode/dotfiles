@@ -36,7 +36,7 @@
     dotfilesPath = lib.mkOption {
       type = lib.types.path;
       description = "Path of dotfiles repository.";
-      default = builtins.toPath(config.homePath + "/dev/personal/dotfiles");
+      default = builtins.toPath(config.homePath + "/.nixos-configuration");
     };
   };
 
