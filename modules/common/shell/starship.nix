@@ -19,6 +19,7 @@
       format = lib.concatStrings [
         "$hostname"
         "$nix_shell"
+        "$kubernetes"
         "$directory"
         "$git_branch"
         "$git_status"
@@ -41,6 +42,11 @@
       directory = {
         truncate_to_repo = true;
         truncation_length = 10;
+      };
+
+      kubernetes = {
+        format = " [󱃾 $context\($namespace\)](bold purple)";
+        disabled = false;
       };
 
       nix_shell = {
