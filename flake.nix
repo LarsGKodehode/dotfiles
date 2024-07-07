@@ -1,46 +1,58 @@
 {
-  description = "WSL NixOS configuration";
+  # This configuration setup is heavily inspired by nmasur
+  # https://github.com/nmasur/dotfiles
+  description = "My System";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  };
 
-  outputs = inputs@{ self, nixpkgs, nixos-wsl, home-manager }: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          # TODO Move to moreaptly named modules
-          ./configuration.nix
+    # System Packages
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
 
-          # WSL Configurations
-          nixos-wsl.nixosModules.default
-          {
-            system.stateVersion = "24.05"; # Don't touch!
+    # Used for Windows Subsystem for Linux compability
+    wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-            wsl = {
-              enable = true;
-              defaultUser = "zab";
-            };
-          }
-
-          # Home Manager Configurations
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.zab = import ./home.nix;
-            # Arguments to pass in to the home.nix function
-            home-manager.extraSpecialArgs = {
-              username = "zab";
-            };
-          }
-        ];
-      };
+    # Used for user packages and dotfiles
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs"; # Use system package list for their inputs
     };
   };
+
+  outputs = 
+    { nixpkgs, ... }@inputs:
+    
+    let    
+      # Global Configuration for my systems
+      globals =
+        rec {
+          user = "zab";
+          fullName = "zabronax";
+          gitName = fullName;
+          gitEmail = "104063134+LarsGKodehode@users.noreply.github.com";
+        };
+
+      # Put always enabled overlays in this list
+      overlays = [];
+
+      # System types to support
+      supportedSystems = [
+        "x86_64-linux"
+      ];
+
+      # Helper function to generate an attribute set '{ x86_64-linux = f "x86_64-linux"; ... }'
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+    in
+    rec {
+      # Contains full system builds including home manager
+      # nixos-rebuild switch --flake .#weasel
+      nixosConfigurations = {
+        weasel = import ./hosts/weasel { inherit inputs globals overlays; };
+      };
+    };
 }
