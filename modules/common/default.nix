@@ -38,6 +38,19 @@
       description = "Path of dotfiles repository.";
       default = builtins.toPath(config.homePath + "/.nixos-configuration");
     };
+
+    theme = {
+      colors = lib.mkOption {
+        type = lib.types.attrs;
+        description = "Base16 color scheme.";
+        default = (import ../colorscheme/nord).dark;
+      };
+      dark = lib.mkOption {
+        type = lib.types.bool;
+        description = "Enable dark mode.";
+        default = true;
+      };
+    };
   };
 
   config =

@@ -13,6 +13,7 @@
     settings = {
       # Configurations
       command_timeout = 1000;
+      palette = "nord";
 
       # Looks
       add_newline = false;
@@ -74,6 +75,18 @@
         renamed = "»";
         deleted = "✘";
         style = "red";
+      };
+
+      # Theming
+      palettes.nord = {
+        black = "#1d2021";
+        red = config.theme.colors.base08;
+        green = config.theme.colors.base0B;
+        yellow = config.theme.colors.base0A;
+        blue = config.theme.colors.base0D;
+        magenta = config.theme.colors.base0E;
+        cyan = config.theme.colors.base0C;
+        white = config.theme.colors.base05;
       };
     };
   };

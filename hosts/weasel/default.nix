@@ -20,6 +20,10 @@ inputs.nixpkgs.lib.nixosSystem {
     {
       networking.hostName = "weasel";
       nixpkgs.overlays = overlays;
+      theme = {
+        colors = (import ../../colorscheme/nord).dark;
+        dark = true;
+      };
 
       wsl = {
         enable = true;
