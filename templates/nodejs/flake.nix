@@ -8,7 +8,7 @@
   };
 
   outputs =
-    { nixpkgs }:
+    { self, nixpkgs }:
     let
       forAllSystems = nixpkgs.lib.genAttrs [
         "x86_64-linux"
