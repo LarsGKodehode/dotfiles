@@ -54,5 +54,15 @@
       nixosConfigurations = {
         weasel = import ./hosts/weasel { inherit inputs globals overlays; };
       };
+
+      # Templates for starting projects quickly
+      templates = rec {
+        default = basic;
+
+        basic = {
+          path = ./templates/basic;
+          description = "Basic program template.";
+        };
+      };
     };
 }
