@@ -25,6 +25,9 @@ inputs.nixpkgs.lib.nixosSystem {
         dark = true;
       };
 
+      # Enable Nix experimental feauters for this host
+      nix.settings.experimental-features = "nix-command flakes";
+
       wsl = {
         enable = true;
         wslConf.automount.root = "/mnt";
