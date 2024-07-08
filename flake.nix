@@ -63,6 +63,11 @@
           path = ./templates/basic;
           description = "Basic program template.";
         };
+
+        nodejs = {
+          path = ./templates/nodejs;
+          description = "NodeJS template with PNPM setup";
+        };
       };
     };
 }
