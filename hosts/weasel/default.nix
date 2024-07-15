@@ -37,6 +37,8 @@ inputs.nixpkgs.lib.nixosSystem {
         wslConf.network.generateResolvConf = true; # Turn of if it breaks VPN
         interop.includePath = false; # Including Windows PATH will slow down other systems, filesystem cross talk
       };
+
+      vscode.enable = true;
     }
   ];
 }
