@@ -21,7 +21,6 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.hostName = "weasel";
       nixpkgs.overlays = overlays;
       theme = {
-        #colors = (import ../../colorscheme/gruvbox-light-soft).light;
         colors = (import ../../colorscheme/nord).dark;
         dark = false;
       };
