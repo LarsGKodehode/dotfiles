@@ -9,7 +9,7 @@
   config = {
     home-manager.users.${config.user} = {
       programs.bash = {
-        enable = true;
+        enable = false;
         initExtra = "";
         profileExtra = "";
       };
