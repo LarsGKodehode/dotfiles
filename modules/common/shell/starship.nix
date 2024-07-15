@@ -13,7 +13,7 @@
     settings = {
       # Configurations
       command_timeout = 1000;
-      palette = "nord";
+      palette = "outsourced";
 
       # Looks
       add_newline = false;
@@ -78,7 +78,7 @@
       };
 
       # Theming
-      palettes.nord = {
+      palettes.outsourced = {
         black = "#1d2021";
         red = config.theme.colors.base08;
         green = config.theme.colors.base0B;
