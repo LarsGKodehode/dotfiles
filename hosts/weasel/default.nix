@@ -21,8 +21,8 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.hostName = "weasel";
       nixpkgs.overlays = overlays;
       theme = {
-        colors = (import ../../colorscheme/nord).dark;
-        dark = true;
+        colors = (import ../../colorscheme/gruvbox-light-soft).light;
+        dark = false;
       };
 
       # Enable Nix experimental feauters for this host
