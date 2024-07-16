@@ -30,9 +30,9 @@ inputs.nixpkgs.lib.nixosSystem
         dark = false;
       };
 
-      # TODO Figure out how to move this to the VS Code Server
-      # module
-      # For VS Code Server support
+      # Enable the VS Code Server for remote work
+      # TODO Figure out how to move all of this into it's
+      # own module
       programs.nix-ld = {
         enable = true;
         package = inputs.nix-ld-rs.packages."${system}".nix-ld-rs;
