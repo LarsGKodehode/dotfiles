@@ -27,17 +27,15 @@
         "$character"
       ];
 
-      right_format = "$nix_shell";
-
       # Modules
       character = {
-        format = " $symbol ";
+        format = "$symbol ";
         success_symbol = "[λ](bold green)";
         error_symbol = "[λ](bold red)";
       };
 
       hostname = {
-        format = "on [$hostname](bold red)";
+        format = "on [$hostname](bold red) ";
       };
 
       directory = {
@@ -46,13 +44,13 @@
       };
 
       kubernetes = {
-        format = " [󱃾 $context\($namespace\)](bold purple)";
+        format = " [󱃾 $context\($namespace\)](bold purple) ";
         disabled = false;
       };
 
       nix_shell = {
-        format = "[$symbol $name]($style)";
-        symbol = "❄️";
+        format = "[$state]($style) ";
+        impure_msg = "[❅](bold red)";
       };
 
       git_branch = {
@@ -63,23 +61,19 @@
       };
 
       git_status = {
-        format = "([$all_status$ahead_behind]($style))";
-        conflicted = "=";
+        format = "([\\[$all_status$ahead_behind\\]]($style)) ";
         ahead = "⇡";
         behind = "⇣";
         diverged = "⇕";
-        untracked = "⋄";
-        stashed = "⩮";
-        modified = "∽";
+        untracked = "?";
+        modified = "!";
         staged = "+";
-        renamed = "»";
-        deleted = "✘";
-        style = "red";
+        style = "bold red";
       };
 
       # Theming
       palettes.outsourced = {
-        black = "#1d2021";
+        black = config.theme.colors.base00;
         red = config.theme.colors.base08;
         green = config.theme.colors.base0B;
         yellow = config.theme.colors.base0A;
