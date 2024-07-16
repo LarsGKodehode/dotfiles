@@ -7,8 +7,12 @@
   ...
 }:
 
-inputs.nixpkgs.lib.nixosSystem {
+let
   system = "x86_64-linux";
+in
+inputs.nixpkgs.lib.nixosSystem
+  {
+  inherit system;
   specialArgs = { };
   modules = [
     ../../modules/common
@@ -25,6 +29,14 @@ inputs.nixpkgs.lib.nixosSystem {
         dark = false;
       };
 
+      # TODO Figure out how to move this to the VS Code Server
+      # module
+      # For VS Code Server support
+      programs.nix-ld = {
+        enable = true;
+        package = inputs.nix-ld-rs.packages."${system}".nix-ld-rs;
+      };
+
       # Enable Nix experimental feauters for this host
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -37,8 +49,6 @@ inputs.nixpkgs.lib.nixosSystem {
         wslConf.network.generateResolvConf = true; # Turn of if it breaks VPN
         interop.includePath = false; # Including Windows PATH will slow down other systems, filesystem cross talk
       };
-
-      vscode.enable = true;
     }
   ];
 }

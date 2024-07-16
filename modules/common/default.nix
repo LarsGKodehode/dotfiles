@@ -63,6 +63,7 @@
       environment.systemPackages = with pkgs; [
         git
         curl
+        wget
       ];
 
       # Use system-level packages instead of Home Manager's
