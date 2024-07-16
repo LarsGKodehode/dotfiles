@@ -21,6 +21,7 @@ inputs.nixpkgs.lib.nixosSystem
     globals
     inputs.wsl.nixosModules.wsl
     inputs.home-manager.nixosModules.home-manager
+    inputs.vscode-server.nixosModules.default
     {
       networking.hostName = "weasel";
       nixpkgs.overlays = overlays;
@@ -36,6 +37,7 @@ inputs.nixpkgs.lib.nixosSystem
         enable = true;
         package = inputs.nix-ld-rs.packages."${system}".nix-ld-rs;
       };
+      services.vscode-server.enable = true;
 
       # Enable Nix experimental feauters for this host
       nix.settings.experimental-features = "nix-command flakes";
