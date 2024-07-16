@@ -80,6 +80,11 @@
           path = ./templates/nodejs;
           description = "NodeJS template with PNPM setup";
         };
+
+        rust = {
+          path = ./templates/rust;
+          description = "Rustlang template";
+        };
       };
     };
 }
