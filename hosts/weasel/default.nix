@@ -21,7 +21,6 @@ inputs.nixpkgs.lib.nixosSystem
     globals
     inputs.wsl.nixosModules.wsl
     inputs.home-manager.nixosModules.home-manager
-    inputs.vscode-server.nixosModules.default
     {
       networking.hostName = "weasel";
       nixpkgs.overlays = overlays;
@@ -29,15 +28,6 @@ inputs.nixpkgs.lib.nixosSystem
         colors = (import ../../colorscheme/nord).dark;
         dark = false;
       };
-
-      # Enable the VS Code Server for remote work
-      # TODO Figure out how to move all of this into it's
-      # own module
-      programs.nix-ld = {
-        enable = true;
-        package = inputs.nix-ld-rs.packages."${system}".nix-ld-rs;
-      };
-      services.vscode-server.enable = true;
 
       # Enable Nix experimental feauters for this host
       nix.settings.experimental-features = "nix-command flakes";

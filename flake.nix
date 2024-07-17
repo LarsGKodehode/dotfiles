@@ -21,18 +21,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs"; # Use system package list for their inputs
     };
-
-    # Used for enabling dynamically linked libraries (VS Code Server)
-    nix-ld-rs = {
-      url = "github:nix-community/nix-ld-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # VS Code Server
-    vscode-server = {
-      url = "github:nix-community/nixos-vscode-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = 
