@@ -24,6 +24,17 @@
       home.sessionVariables = {
         EDITOR = "nvim";
       };
+
+      # Aliases for launching Neovim
+      programs.fish = {
+        shellAliases = {
+          vim = "nvim";
+        };
+
+        shellAbbrs = {
+          v = "nvim";
+        };
+      };
     };
   };
 }
