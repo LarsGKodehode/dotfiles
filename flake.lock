@@ -126,12 +126,30 @@
         "type": "github"
       }
     },
+    "nvim-treesitter-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721232273,
+        "narHash": "sha256-PKCqV2h4gwWNWjF+D71hu1UDNfde7qXj99ACjHF6Zbs=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "dd7bb795c48b5b9795bde0537bb29ddf9fb7b42d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "ref": "master",
+        "repo": "nvim-treesitter",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "base16-nvim-src": "base16-nvim-src",
         "home-manager": "home-manager",
         "nix2vim": "nix2vim",
         "nixpkgs": "nixpkgs",
+        "nvim-treesitter-src": "nvim-treesitter-src",
         "wsl": "wsl"
       }
     },

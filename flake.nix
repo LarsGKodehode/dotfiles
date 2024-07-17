@@ -34,6 +34,13 @@
       url = "github:RRethy/base16-nvim";
       flake = false;
     };
+
+    # Tree Sitter
+    nvim-treesitter-src = {
+      # https://github.com/nvim-treesitter/nvim-treesitter/tags
+      url = "github:nvim-treesitter/nvim-treesitter/master";
+      flake = false;
+    };
   };
 
   outputs = 

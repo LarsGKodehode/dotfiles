@@ -18,6 +18,8 @@ let
 in
 {
   vimPlugins = prev.vimPlugins // {
+    nvim-treesitter = withSrc prev.vimPlugins.nvim-treesitter inputs.nvim-treesitter-src;
+
     # Packaging plugins entirely with Nix
     base16-nvim = plugin "base16-nvim" inputs.base16-nvim-src;
   };

@@ -13,5 +13,6 @@ pkgs.neovimBuilder {
   imports = [
     ../config/colors.nix
     ../config/misc.nix
+    ../config/syntax.nix
   ];
 }
