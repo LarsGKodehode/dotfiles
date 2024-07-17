@@ -26,7 +26,7 @@ inputs.nixpkgs.lib.nixosSystem
       nixpkgs.overlays = overlays;
       theme = {
         colors = (import ../../colorscheme/nord).dark;
-        dark = false;
+        dark = true;
       };
 
       # Enable Nix experimental feauters for this host

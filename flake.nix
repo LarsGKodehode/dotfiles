@@ -21,6 +21,19 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs"; # Use system package list for their inputs
     };
+
+    # Convert Nix to Neovim config
+    nix2vim = {
+      url = "github:gytis-ivaskevicius/nix2vim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Neovim Plugins
+    # For sourcing colors from ./colorschemes
+    base16-nvim-src = {
+      url = "github:RRethy/base16-nvim";
+      flake = false;
+    };
   };
 
   outputs = 
@@ -37,7 +50,10 @@
         };
 
       # Put always enabled overlays in this list
-      overlays = [];
+      overlays = [
+        inputs.nix2vim.overlay
+        (import ./overlays/neovim-plugins.nix inputs)
+      ];
 
       # System types to support
       supportedSystems = [
